@@ -7,23 +7,23 @@ cask "autodesk-fusion360" do
   name "Autodesk Fusion 360"
   homepage "https://www.autodesk.com/products/fusion-360"
 
-  installer script: "Right-click > Open to Install.app/Contents/MacOS/Fusion 360 Client Downloader"
+  installer script: "Install Autodesk Fusion 360.app/Contents/MacOS/Fusion 360 Client Downloader"
 
-  uninstall quit:   [
-    "com.autodesk.fusion360",
-    "com.autodesk.dls.streamer.scriptapp.Autodesk-Fusion-360",
-  ],
-            script: {
-              executable: "#{staged_path}/Right-click > Open to Install.app/Contents/MacOS/streamer",
-              args:       [
-                "--process", "uninstall",
-                "--appid", "73e72ada57b7480280f7a6f4a289729f",
-                "--stream", "production",
-                "--quiet"
-              ],
-            },
-            delete: [
-              "~/Applications/Autodesk Fusion 360.app",
-              "~/Applications/Remove Autodesk Fusion 360.app",
-            ]
+  uninstall quit: [
+      "com.autodesk.fusion360",
+      "com.autodesk.dls.streamer.scriptapp.Autodesk-Fusion-360",
+    ],
+    script: {
+      executable: "#{staged_path}/Install Autodesk Fusion 360.app/Contents/MacOS/streamer",
+      args: [
+        "-p", "uninstall",
+        "-a", "73e72ada57b7480280f7a6f4a289729f",
+        "-s", "production",
+        "--quiet"
+      ],
+    },
+    delete: [
+      "~/Applications/Autodesk Fusion 360.app",
+      "~/Applications/Remove Autodesk Fusion 360.app",
+    ]
 end
